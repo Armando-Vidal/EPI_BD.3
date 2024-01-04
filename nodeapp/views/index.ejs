@@ -75,17 +75,29 @@
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Artístico" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Nome Verdadeiro" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Sexo" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Ano de Nascimento" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Nascimento" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Site" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Ano de Início" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Número Total de Anos" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Início" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Número Total de Anos Trabalhados" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Situação" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Profissão Diretor" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Profissão Ator" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Profissão Produtor" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Profissão Roteirista" /></div>
+								<div class="col-6 col-12-mobile-caixa">
+									<input type="checkbox" name="diretor" class="caixa" value="true" />
+									<label for="diretor">Profissão Diretor</label>
+								</div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="name" class="caixa" value="true" />
+									<label for="diretor">Profissão Ator</label>
+								</div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="name" class="caixa" value="true" />
+									<label for="diretor">Profissão Produtor</label>
+								</div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="name" class="caixa" value="true" />
+									<label for="diretor">Profissão Roteirista</label>
+								</div>
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
@@ -106,11 +118,11 @@
 						<form method="post" action="#">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Ano Início" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="email" placeholder="Ano Início" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nacionalidade" /></div>
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
@@ -131,11 +143,11 @@
 						<form method="post" action="#">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome do Evento" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Ano" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome" /></div>
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
@@ -161,13 +173,16 @@
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Evento" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Tipo do Evento" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Ano do Evento" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano do Evento" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Artístico" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original do Filme" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Ano de Produção do Filme" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="A pessoa ganhou?" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção do Filme" /></div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="name" class="caixa" value="true" />
+									<label for="diretor">A Pessoa Venceu o Prêmio?</label>
+								</div>
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
@@ -185,13 +200,16 @@
 						<form method="post" action="#">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Ano de Produção" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome do Evento" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Ano do Evento" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano do Evento" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo do Evento" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="O filme ganhou?" /></div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="name" class="caixa" value="true" />
+									<label for="diretor">O Filme Venceu o Prêmio?</label>
+								</div>
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
@@ -212,15 +230,18 @@
 						<form method="post" action="#">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Ano de Produção" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título no Brasil" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Idioma Original" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Classe" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Data de Estreia" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Arrecadação no Primeiro Ano" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Gênero" /></div>
+								<div class="col-6 col-12-mobile">
+									<input type="date" name="name_date" placeholder="Data de Estreia" class="datas" />
+									<label for="name_date">Data de Estréia</label>
+								</div>
+								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Arrecadado Primeiro Ano" /></div>
+								
 								<div class="col-12">
-									<input type="submit" value="Send Message" />
+									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
