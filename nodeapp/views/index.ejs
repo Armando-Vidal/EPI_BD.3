@@ -21,8 +21,8 @@
 					<!-- Logo -->
 						<div id="logo">
 							<span class="image avatar48"><img src="./images/avatar.jpg" alt="" /></span>
-							<h1 id="title">Jane Doe Teste</h1>
-							<p>Hyperspace Engineer</p>
+							<h1 id="title">Banco de Dados de Premiações</h1>
+							<p>Homenageando o Cinema</p>
 						</div>
 
 					<!-- Nav -->
@@ -72,28 +72,28 @@
 
 						<form method="POST" action="/pessoa/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Artístico" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Nome Verdadeiro" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Sexo" /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Nascimento" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Site" /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Início" /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Número Total de Anos Trabalhados" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Situação" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeverdadeiro" placeholder="Nome Verdadeiro" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="sexo" placeholder="Sexo" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anonasc" placeholder="Ano de Nascimento" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="site" placeholder="Site" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoinic" placeholder="Ano de Início" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="nrototalanos" placeholder="Número Total de Anos Trabalhados" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="situacao" placeholder="Situação" /></div>
 								<div class="col-6 col-12-mobile-caixa">
-									<input type="checkbox" name="diretor" class="caixa" value="true" />
+									<input type="checkbox" name="profdiretor" class="caixa" value="true" />
 									<label for="diretor">Profissão Diretor</label>
 								</div>
 								<div class="col-6 col-12-mobile">
-									<input type="checkbox" name="name" class="caixa" value="true" />
+									<input type="checkbox" name="profator" class="caixa" value="true" />
 									<label for="diretor">Profissão Ator</label>
 								</div>
 								<div class="col-6 col-12-mobile">
-									<input type="checkbox" name="name" class="caixa" value="true" />
+									<input type="checkbox" name="profprodutor" class="caixa" value="true" />
 									<label for="diretor">Profissão Produtor</label>
 								</div>
 								<div class="col-6 col-12-mobile">
-									<input type="checkbox" name="name" class="caixa" value="true" />
+									<input type="checkbox" name="profroteirista" class="caixa" value="true" />
 									<label for="diretor">Profissão Roteirista</label>
 								</div>
 								<div class="col-12">
@@ -117,10 +117,10 @@
 
 						<form method="POST" action="/evento/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="email" placeholder="Ano Início" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nacionalidade" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nome" placeholder="Nome" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoinicio" placeholder="Ano Início" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nacionalidade" placeholder="Nacionalidade" /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
@@ -142,10 +142,10 @@
 
 						<form method="POST" action="/premio/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nome" placeholder="Nome" /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
@@ -171,14 +171,14 @@
 
 						<form method="POST" action="/enominado/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Tipo do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome Artístico" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original do Filme" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
 								<div class="col-6 col-12-mobile">
-									<input type="checkbox" name="name" class="caixa" value="true" />
+									<input type="checkbox" name="ganhou" class="caixa" value="true" />
 									<label for="diretor">A Pessoa Venceu o Prêmio?</label>
 								</div>
 								<div class="col-12">
@@ -199,13 +199,13 @@
 
 						<form method="POST" action="/filmenominado/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nome do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Tipo do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo do Evento" required /></div>
 								<div class="col-6 col-12-mobile">
-									<input type="checkbox" name="name" class="caixa" value="true" />
+									<input type="checkbox" name="premiado" class="caixa" value="true" />
 									<label for="diretor">O Filme Venceu o Prêmio?</label>
 								</div>
 								<div class="col-12">
@@ -229,16 +229,16 @@
 
 						<form method="POST" action="/filme/create">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título Original" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Ano de Produção" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Título no Brasil" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Idioma Original" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Classe" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulonobrasil" placeholder="Título no Brasil" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="idiomaoriginal" placeholder="Idioma Original" /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="classe" placeholder="Classe" /></div>
 								<div class="col-6 col-12-mobile">
-									<input type="date" name="name_date" placeholder="Data de Estreia" class="datas" />
+									<input type="date" name="dataestreio" placeholder="Data de Estreia" class="datas" />
 									<label for="name_date">Data de Estréia</label>
 								</div>
-								<div class="col-6 col-12-mobile"><input type="number" name="name" placeholder="Arrecadado Primeiro Ano" /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="arrecadacaoprimano" placeholder="Arrecadado Primeiro Ano" /></div>
 								
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
