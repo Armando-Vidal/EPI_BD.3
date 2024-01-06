@@ -13,8 +13,17 @@ router.post('/create', (req, res) => {
     const body = req.body;
     console.log(body);
     console.log("Dados recebidos com sucesso!");
-    const sql = 'INSERT INTO evento SET ?';
-    db.query(sql, body, (err, results) => {
+
+    const columns = Object.keys(body).join(', ');
+    const values = Object.values(body);
+
+    const placeholders = values.map((_, index) => `$${index + 1}`).join(', ');
+
+    const sql = `INSERT INTO evento (${columns}) VALUES (${placeholders})`;
+    console.log(sql);
+    console.log(values);
+
+    db.query(sql, values, (err, results) => {
         if (err) throw err;
         console.log("Dados inseridos com sucesso!");
         res.redirect('/evento/form');

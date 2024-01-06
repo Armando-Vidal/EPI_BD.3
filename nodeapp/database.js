@@ -1,12 +1,16 @@
-// var mysql = require('mysql');
-// var connection = mysql.createConnection({
+// const { Pool } = require('pg');
+
+// const pool = new Pool({
 //     host: 'localhost',
-//     user: 'root',
-//     password: 'password',
-//     database: 'nodeapp'
+//     user: 'your_username',
+//     password: 'your_password',
+//     database: 'your_database',
+//     port: 5432, // default PostgreSQL port
 // });
-// connection.connect(function(err) {
+
+// pool.connect((err) => {
 //     if (err) throw err;
+//     console.log("Connected to the database!");
 // });
-// console.log("Conectado ao banco de dados!");
-// module.exports = connection;
+
+// module.exports = pool;
