@@ -30,10 +30,18 @@
 							<ul>
 								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
 								<li><a href="#cadastro_pessoa" id="portfolio-link"><span class="icon solid fa-th">Cadastro Pessoa</span></a></li>
+								<li><a href="#cadastro_juiz" id="contact-link"><span class="icon solid fa-envelope">Cadastro Juri</span></a></li>
+								<li><a href="#cadastro_diretor" id="contact-link"><span class="icon solid fa-envelope">Cadastro Diretor</span></a></li>
+								<li><a href="#cadastro_principal" id="contact-link"><span class="icon solid fa-envelope">Cadastro Protagonista</span></a></li>
+								<li><a href="#cadastro_coadjuvante" id="contact-link"><span class="icon solid fa-envelope">Cadastro Coadjuvante</span></a></li>
+								<li><a href="#cadastro_produtor" id="contact-link"><span class="icon solid fa-envelope">Cadastro Produtor</span></a></li>
+								<li><a href="#cadastro_roteirista" id="contact-link"><span class="icon solid fa-envelope">Cadastro Roteirista</span></a></li>
 								<li><a href="#cadastro_evento" id="about-link"><span class="icon solid fa-user">Cadastro Evento</span></a></li>
 								<li><a href="#cadastro_premio" id="contact-link"><span class="icon solid fa-envelope">Cadastro Prêmio</span></a></li>
+								<li><a href="#cadastro_edicao" id="contact-link"><span class="icon solid fa-envelope">Cadastro Edição</span></a></li>
 								<li><a href="#cadastro_nominacao" id="contact-link"><span class="icon solid fa-envelope">Cadastro Indicação</span></a></li>
 								<li><a href="#cadastro_filme" id="contact-link"><span class="icon solid fa-envelope">Cadastro Filme</span></a></li>
+								<li><a href="#cadastro_estreia" id="contact-link"><span class="icon solid fa-envelope">Cadastro Local de Estreia</span></a></li>
 							</ul>
 						</nav>
 
@@ -104,6 +112,160 @@
 
 					</div>
 				</section>
+				
+				<!-- cadastro de juiz -->
+				<section id="cadastro_juiz" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Júri</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que participou de um evento como júri (e não como candidato).
+						</p>
+
+						<form method="POST" action="/ejuri/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano da Edição" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de diretor -->
+				<section id="cadastro_diretor" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Diretor</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que dirigiu um filme que participou do evento e concorreu a um prêmio.
+						</p>
+
+						<form method="POST" action="/ediretor/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Dirigido" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-6 col-12-mobile">
+									<input type="checkbox" name="eprincipal" class="caixa" value="true" />
+									<label for="eprincipal">Esse Diretor é ator no filme?</label>
+								</div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de protagonista -->
+				<section id="cadastro_principal" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Ator Protagonista</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que atuou como protagonista em um filme,<br> concorrendo para melhor ator/atriz principal.
+						</p>
+
+						<form method="POST" action="/atorprincipal/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Atuado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de secundario -->
+				<section id="cadastro_coadjuvante" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Ator Coadjuvante</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que atuou como coadjuvante em um filme,<br> concorrendo para melhor ator/atriz coadjuvante.
+						</p>
+
+						<form method="POST" action="/atorelenco/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Atuado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de produtor -->
+				<section id="cadastro_produtor" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Produtor</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que produziu um filme indicado.
+						</p>
+
+						<form method="POST" action="/eprodutor/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Produzido" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de roteirista -->
+				<section id="cadastro_roteirista" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Roteirista</h2>
+						</header>
+
+						<p>Cadastre uma pessoa que roterizou um filme indicado.
+						</p>
+
+						<form method="POST" action="/eroteirista/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeart" placeholder="Nome Artístico" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Roterizado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
 
 				<!-- cadastro evento -->
 				<section id="cadastro_evento" class="four">
@@ -146,6 +308,34 @@
 								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo" required /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="nome" placeholder="Nome" /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro edição -->
+				<section id="cadastro_edicao" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de Edição</h2>
+						</header>
+
+						<p>Cadastre a edição de um evento de premiação de filmes</p>
+
+						<form method="POST" action="/edicao/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano da Edição" /></div>
+								<div class="col-6 col-12-mobile">
+									<input type="date" name="data_" placeholder="Data em que Ocorreu" class="datas" />
+									<label for="name_date">Data da Edição</label>
+								</div>
+								<div class="col-6 col-12-mobile"><input type="text" name="localizacao" placeholder="Local Onde Ocorreu" /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
@@ -240,6 +430,31 @@
 								</div>
 								<div class="col-6 col-12-mobile"><input type="number" name="arrecadacaoprimano" placeholder="Arrecadado Primeiro Ano" /></div>
 								
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
+				<!-- cadastro de local de estreia -->
+				<section id="cadastro_estreia" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Cadastro de um Local de Estreia de um Filme</h2>
+						</header>
+
+						<p>Cadastre o local em que um filme indicado estreou.
+						</p>
+
+						<form method="POST" action="/localestreio/create">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="local_" placeholder="Local de Estreia" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="titulooriginal" placeholder="Título Original do Filme Roterizado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção do Filme" required /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
