@@ -13,6 +13,13 @@ let filmeRouter = require ('./routes/filme');
 let filmenominadoRouter = require ('./routes/filmenominado');
 let premioRouter = require ('./routes/premio');
 
+//relatorios
+const atoresMaisPremiadosRouter = require('./routes/atoresMaisPremiados');
+const filmesMaisPremiadosRouter = require('./routes/filmesMaisPremiados');
+const maiorArrecadacaoRouter = require('./routes/maiorArrecadacao');
+const melhorAtorRouter = require('./routes/melhorAtor');
+const premioDetalhesRouter = require('./routes/premioDetalhes');
+
 var app = express();
 
 // view engine setup
@@ -32,6 +39,14 @@ app.use('/evento', eventoRouter);
 app.use('/filme', filmeRouter);
 app.use('/filmenominado', filmenominadoRouter);
 app.use('/premio', premioRouter);
+
+//Rotas dos relatorios
+app.use('/atoresMaisPremiados', atoresMaisPremiadosRouter);
+app.use('/filmesMaisPremiados', filmesMaisPremiadosRouter);
+app.use('/filmesMaiorArrecadacao', maiorArrecadacaoRouter);
+app.use('/atoresNominadosMelhorAtor', melhorAtorRouter);
+app.use('/premioDetalhes', premioDetalhesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
