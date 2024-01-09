@@ -5,17 +5,17 @@ const db = require('../database');
 router.get('/', async (req, res) => {
   try {
     const result = await db.query(`
-    SELECT DISTINCT p.NomeArt
-    FROM PESSOA p
-    WHERE NOT EXISTS (
-      SELECT e.NomeEvento
-      FROM EVENTOS e
+    SELECT DISTINCT en.NomeArt
+    FROM ENOMINADO en
+    WHERE en.Tipo = 'Melhor Ator'
+    AND NOT EXISTS (
+      SELECT e.Ano
+      FROM EDICAO e
       WHERE NOT EXISTS (
         SELECT *
-        FROM EJURI ej
-        WHERE ej.NomeArt = p.NomeArt AND ej.NomeEvento = e.Nome
+        FROM ENOMINADO en2
+        WHERE en2.NomeArt = en.NomeArt AND en2.Ano = e.Ano AND en2.Tipo = 'Melhor Ator'
       )
-    ) AND p.ProfAtor = TRUE;
     `);
 
     const melhorAtor = result.rows;

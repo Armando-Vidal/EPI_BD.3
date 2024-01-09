@@ -43,8 +43,8 @@ app.use('/premio', premioRouter);
 //Rotas dos relatorios
 app.use('/atoresMaisPremiados', atoresMaisPremiadosRouter);
 app.use('/filmesMaisPremiados', filmesMaisPremiadosRouter);
-app.use('/filmesMaiorArrecadacao', maiorArrecadacaoRouter);
-app.use('/atoresNominadosMelhorAtor', melhorAtorRouter);
+app.use('/maiorArrecadacao', maiorArrecadacaoRouter);
+app.use('/melhorAtor', melhorAtorRouter);
 app.use('/premioDetalhes', premioDetalhesRouter);
 
 
