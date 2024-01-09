@@ -7,9 +7,15 @@ router.get('/:nomeEvento/:ano/:tipo', async (req, res) => {
 
   try {
     const result = await db.query(`
-      SELECT *
-      FROM FILMENOMINADO
-      WHERE NomeEvento = $1 AND Ano = $2 AND Tipo = $3
+    SELECT
+      f.TituloOriginal AS filmeTitulo,
+      f.AnoProducao AS filmeAnoProducao,
+      p.NomeArt AS pessoaNomeArt,
+      fn.Premiado AS foiPremiado
+    FROM FILMENOMINADO fn
+    LEFT JOIN FILMES f ON fn.TituloOriginal = f.TituloOriginal AND fn.AnoProducao = f.AnoProducao
+    LEFT JOIN PESSOA p ON fn.NomeArt = p.NomeArt
+    WHERE fn.NomeEvento = $1 AND fn.Ano = $2 AND fn.Tipo = $3;
     `, [nomeEvento, ano, tipo]);
 
     const premioDetalhes = result.rows;
