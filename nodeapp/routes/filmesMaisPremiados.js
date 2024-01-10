@@ -13,8 +13,12 @@ router.get('/', async (req, res) => {
       LIMIT 10
     `);
 
-    const filmesMaisPremiados = result.rows;
-    res.json({ filmesMaisPremiados });
+    const filmesMaisPremiados = result.rows.map((filme) => ({
+      label: filme.TituloOriginal,
+      value: filme.numPremios,
+    }));
+
+    res.json({ data: filmesMaisPremiados });
   } catch (error) {
     console.error(error);
     res.status(500).send('Erro interno do servidor');

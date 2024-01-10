@@ -464,7 +464,68 @@
 					</div>
 				</section>
 
-			</div>
+				<!-- Obter Atores Premiados -->
+				<section id="obter_atores_premiados" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Obter Atores Mais Premiados</h2>
+						</header>
+
+						<form id="form_obter_atores" onsubmit="obterAtoresPremiados(); return false;">
+							<div class="row">
+								<div class="col-12">
+									<input type="submit" value="Obter Atores Premiados" />
+								</div>
+							</div>
+						</form>
+
+						<div id="resultado_atores_premiados"></div>
+					</div>
+				</section>
+
+				</div>
+
+				<!-- Obter Filmes Premiados -->
+				<section id="obter_filmes_premiados" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Obter Filmes Mais Premiados</h2>
+						</header>
+
+						<form id="form_obter_filmes" onsubmit="obterFilmesPremiados(); return false;">
+							<div class="row">
+								<div class="col-12">
+									<input type="submit" value="Obter Filmes Premiados" />
+								</div>
+							</div>
+						</form>
+
+						<div id="resultado_filmes_premiados"></div>
+					</div>
+				</section>
+
+				<!-- Obter Maior Arrecadação -->
+				<section id="obter_maior_arrecadacao" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Obter Filmes com maior arrecadação</h2>
+						</header>
+
+						<form id="form_obter_atores" onsubmit="obtermaiorArrecadacao(); return false;">
+							<div class="row">
+								<div class="col-12">
+									<input type="submit" value="Obter Maior Arrecadação" />
+								</div>
+							</div>
+						</form>
+
+						<div id="resultado_maior_arrecadacao"></div>
+					</div>
+				</section>
+		</div>
 
 		<!-- Footer -->
 			<div id="footer">
@@ -484,6 +545,57 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+
+			<script>
+				function obterAtoresPremiados() {
+					fetch('/atoresMaisPremiados')
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('resultado_atores_premiados').innerHTML = 'Atores Mais Premiados: ' + JSON.stringify(data);
+						})
+						.catch(error => {
+							console.error('Erro ao obter atores premiados:', error);
+							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter atores premiados. Verifique o console para mais detalhes.';
+						});
+				}
+			
+				// Chama a função ao abrir a pagina
+				window.onload = obterAtoresPremiados;
+			</script>
+			<script>
+				function obterFilmesPremiados() {
+					fetch('/filmesMaisPremiados')
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('resultado_filmes_premiados').innerHTML = 'Filmes Mais Premiados: ' + JSON.stringify(data);
+						})
+						.catch(error => {
+							console.error('Erro ao obter filmes premiados:', error);
+							document.getElementById('resultado_filmes_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
+						});
+				}
+			
+				// Chama a função ao abrir a pagina
+				window.onload = obterFilmesPremiados;
+			</script>
+			<script>
+				function obtermaiorArrecadacao() {
+					fetch('/maiorArrecadacao')
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('resultado_maior_arrecadacao').innerHTML = 'Maiores arrecadações: ' + JSON.stringify(data);
+						})
+						.catch(error => {
+							console.error('Erro ao obter arrecadações:', error);
+							document.getElementById('resultado_maior_arrecadacao').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
+						});
+				}
+			
+				// Chama a função ao abrir a pagina
+				window.onload = obterFilmesPremiados;
+			</script>
+			
+
 
 	</body>
 </html>
