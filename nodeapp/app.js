@@ -12,6 +12,14 @@ let eventoRouter = require ('./routes/evento');
 let filmeRouter = require ('./routes/filme');
 let filmenominadoRouter = require ('./routes/filmenominado');
 let premioRouter = require ('./routes/premio');
+const atorelencoRouter = require('./routes/atorelenco');
+const atorprincipalRouter = require('./routes/atorprincipal');
+const edicaoRouter = require('./routes/edicao');
+const ediretorRouter = require('./routes/ediretor');
+const ejuriRouter = require('./routes/ejuri');
+const eprodutorRouter = require('./routes/eprodutor');
+const eroteiristaRouter = require('./routes/eroteirista');
+const localestreioRouter = require('./routes/localestreio');
 
 //relatorios
 const atoresMaisPremiadosRouter = require('./routes/atoresMaisPremiados');
@@ -39,6 +47,14 @@ app.use('/evento', eventoRouter);
 app.use('/filme', filmeRouter);
 app.use('/filmenominado', filmenominadoRouter);
 app.use('/premio', premioRouter);
+app.use('/atorelenco', atorelencoRouter);
+app.use('/atorprincipal', atorprincipalRouter);
+app.use('/edicao', edicaoRouter);
+app.use('/ediretor', ediretorRouter);
+app.use('/ejuri', ejuriRouter);
+app.use('/eprodutor', eprodutorRouter);
+app.use('/eroteirista', eroteiristaRouter);
+app.use('/localestreio', localestreioRouter);
 
 //Rotas dos relatorios
 app.use('/atoresMaisPremiados', atoresMaisPremiadosRouter);
