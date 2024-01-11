@@ -523,6 +523,28 @@
 						<div id="resultado_maior_arrecadacao"></div>
 					</div>
 				</section>
+
+				<!-- Obter Melhores Atores -->
+				<section id="obter_melhor_ator" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Obter Melhores Atores</h2>
+						</header>
+
+						<form id="form_obter_melhor_ator" onsubmit="obterMelhorAtor(); return false;">
+							<div class="row">
+								<div class="col-12">
+									<input type="submit" value="Obter Melhor Ator" />
+								</div>
+							</div>
+						</form>
+
+						<div id="resultado_melhor_ator"></div>
+					</div>
+				</section>
+
+
 		</div>
 
 		<!-- Footer -->
@@ -594,7 +616,23 @@
 				// Chama a função ao abrir a pagina
 				window.onload = obtermaiorArrecadacao;
 			</script>
+
+			<script>
+				function obterMelhorAtor() {
+					fetch('/melhorAtor') 
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('resultado_melhor_ator').innerHTML = 'Melhores Atores: ' + JSON.stringify(data);
+						})
+						.catch(error => {
+							console.error('Erro ao obter melhores atores:', error);
+							document.getElementById('resultado_melhor_ator').innerHTML = 'Erro ao obter melhores atores. Verifique o console para mais detalhes.';
+						});
+				}
 			
+				// Chama a função ao abrir a pagina
+				window.onload = obterMelhorAtor;
+			</script>			
 
 
 	</body>
