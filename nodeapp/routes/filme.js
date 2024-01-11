@@ -38,7 +38,7 @@ router.post('/create', (req, res) => {
     });
     const placeholders = values.map((_, index) => `$${index + 1}`).join(', ');
 
-    const sql = `INSERT INTO filme (${columns.join(', ')}) VALUES (${placeholders})`;
+    const sql = `INSERT INTO filmes (${columns.join(', ')}) VALUES (${placeholders})`;
     db.query(sql, values, (err, results) => {
         if (err) throw err;
         console.log("Dados inseridos com sucesso!");
