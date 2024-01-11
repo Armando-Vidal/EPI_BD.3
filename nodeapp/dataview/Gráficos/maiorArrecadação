@@ -1,22 +1,20 @@
+// Gráfico de Barras
 import Chart from 'chart.js/auto';
 
-fetch('/sua-rota-backend')
+fetch('../routes/maiorArrecadacao')
   .then(response => response.json())
   .then(data => {
-    // Extraia os dados do objeto retornado pela rota
-    const labels = data.data.map(ator => ator.label);
-    const values = data.data.map(ator => ator.value);
+    const labels = data.data.map(filme => filme.label);
+    const values = data.data.map(filme => filme.value);
 
-    // Crie um contexto para o canvas
-    const ctx = document.getElementById('meuGrafico').getContext('2d');
+    const ctx = document.getElementById('graficoMaiorArrecadação').getContext('2d');
 
-    // Crie o gráfico usando o Chart.js
-    const meuGrafico = new Chart(ctx, {
+    const graficoMaiorArrecadação = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labels,
         datasets: [{
-          label: 'Total de Prêmios',
+          label: 'Arrecadação no Primeiro Ano',
           data: values,
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
