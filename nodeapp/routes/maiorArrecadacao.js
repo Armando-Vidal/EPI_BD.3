@@ -5,14 +5,14 @@ const db = require('../database');
 router.get('/', async (req, res) => {
   try {
     const result = await db.query(`
-      SELECT TituloOriginal, ArrecadacaoPrimAno
+      SELECT TituloOriginal, AnoProducao, ArrecadacaoPrimAno
       FROM FILMES
       ORDER BY ArrecadacaoPrimAno DESC
       LIMIT 10
     `);
 
     const filmesMaiorArrecadacao = result.rows.map((filme) => ({
-      label: filme.titulooriginal,
+      label: `${filme.titulooriginal} (${filme.anoproducao})`,
       value: filme.arrecadacaoprimano,
     }));
 

@@ -550,11 +550,13 @@
 						.then(response => response.json())
 						.then(data => {
 							document.getElementById('resultado_atores_premiados').innerHTML = 'Atores Mais Premiados: ' + JSON.stringify(data);
+
 						})
 						.catch(error => {
 							console.error('Erro ao obter atores premiados:', error);
 							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter atores premiados. Verifique o console para mais detalhes.';
 						});
+						
 				}
 			
 				// Chama a função ao abrir a pagina
@@ -564,8 +566,6 @@
 				function obterFilmesPremiados() {
 					fetch('/filmesMaisPremiados')
 						.then(response => response.json())
-						.then(console.log(response))
-						
 						.then(data => {
 							document.getElementById('resultado_filmes_premiados').innerHTML = 'Filmes Mais Premiados: ' + JSON.stringify(data);
 						})
@@ -592,7 +592,7 @@
 				}
 			
 				// Chama a função ao abrir a pagina
-				window.onload = obterFilmesPremiados;
+				window.onload = obtermaiorArrecadacao;
 			</script>
 			
 

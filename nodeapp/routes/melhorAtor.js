@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         SELECT COUNT(DISTINCT NomeEvento)
         FROM ENOMINADO
         WHERE Tipo = 'Melhor Ator'
-      )
+      );
     `);
 
     const melhorAtor = result.rows;
