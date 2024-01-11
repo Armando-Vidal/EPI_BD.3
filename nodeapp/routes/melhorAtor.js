@@ -5,16 +5,14 @@ const db = require('../database');
 router.get('/', async (req, res) => {
   try {
     const result = await db.query(`
-    SELECT DISTINCT en.NomeArt
-    FROM ENOMINADO en
-    WHERE en.Tipo = 'Melhor Ator'
-    AND NOT EXISTS (
-      SELECT e.Ano
-      FROM EDICAO e
-      WHERE NOT EXISTS (
-        SELECT *
-        FROM ENOMINADO en2
-        WHERE en2.NomeArt = en.NomeArt AND en2.Ano = e.Ano AND en2.Tipo = 'Melhor Ator'
+      SELECT en.NomeArt
+      FROM ENOMINADO en
+      WHERE en.Tipo = 'Melhor Ator'
+      GROUP BY en.NomeArt
+      HAVING COUNT(DISTINCT en.NomeEvento) = (
+        SELECT COUNT(DISTINCT NomeEvento)
+        FROM ENOMINADO
+        WHERE Tipo = 'Melhor Ator'
       )
     `);
 
