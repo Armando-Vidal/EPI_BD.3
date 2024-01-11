@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
     `);
 
     const filmesMaiorArrecadacao = result.rows.map((filme) => ({
-      label: filme.TituloOriginal,
-      value: filme.ArrecadacaoPrimAno,
+      label: filme.titulooriginal,
+      value: filme.arrecadacaoprimano,
     }));
 
     res.json({ data: filmesMaiorArrecadacao });

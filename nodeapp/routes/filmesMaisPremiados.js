@@ -10,15 +10,17 @@ router.get('/', async (req, res) => {
       WHERE Premiado = true
       GROUP BY TituloOriginal
       ORDER BY numPremios DESC
-      LIMIT 10
+      LIMIT 10;
     `);
+    console.log(result.rows);
 
     const filmesMaisPremiados = result.rows.map((filme) => ({
-      label: filme.TituloOriginal,
-      value: filme.numPremios,
+      label: filme.titulooriginal,
+      value: filme.numpremios,
     }));
 
     res.json({ data: filmesMaisPremiados });
+    console.log(filmesMaisPremiados);
   } catch (error) {
     console.error(error);
     res.status(500).send('Erro interno do servidor');

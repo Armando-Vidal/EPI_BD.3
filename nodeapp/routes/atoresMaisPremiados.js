@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
     `);
 
     const atoresMaisPremiados = result.rows.map((ator) => ({
-      label: ator.NomeArt,
-      value: ator.totalPremios,
+      label: ator.nomeart,
+      value: ator.totalpremios,
     }));
 
     res.json({ data: atoresMaisPremiados });

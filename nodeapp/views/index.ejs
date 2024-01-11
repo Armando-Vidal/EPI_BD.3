@@ -546,7 +546,7 @@
 
 			<script>
 				function obterAtoresPremiados() {
-					fetch('/atoresMaisPremiados')
+					fetch('/atoresMaisPremiados') 
 						.then(response => response.json())
 						.then(data => {
 							document.getElementById('resultado_atores_premiados').innerHTML = 'Atores Mais Premiados: ' + JSON.stringify(data);
@@ -564,6 +564,8 @@
 				function obterFilmesPremiados() {
 					fetch('/filmesMaisPremiados')
 						.then(response => response.json())
+						.then(console.log(response))
+						
 						.then(data => {
 							document.getElementById('resultado_filmes_premiados').innerHTML = 'Filmes Mais Premiados: ' + JSON.stringify(data);
 						})
