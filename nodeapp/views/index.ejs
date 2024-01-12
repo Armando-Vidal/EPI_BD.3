@@ -578,7 +578,7 @@
 
 						<p>Procure pelos filmes indicados de um prêmio específico</p>
 
-						<form method="post" action="/buscafilmenominado/">
+						<form method="post" action="/buscafilmenominado/" onsubmit=>
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
 								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
@@ -656,6 +656,18 @@
 							}
 						}
 					});
+				}
+
+				function buscaPremioFilmes() {
+					fetch('/atoresMaisPremiados')
+						.then(response => response.json())
+						.then(data => {
+							criarGrafico('atores_premiados', data);
+						})
+						.catch(error => {
+							console.error('Erro ao obter atores premiados:', error);
+							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
+						});
 				}
 
 				// Chama a função ao abrir a página
