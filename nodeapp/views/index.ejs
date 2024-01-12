@@ -709,13 +709,9 @@
 
 			<script>
 				function obterMelhorAtor() {
-
-					document.getElementById('loading_message').style.display = 'block';
-
 					fetch('/melhorAtor')
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('loading_message').style.display = 'none';
 
 							const resultado = document.getElementById('resultado_melhor_ator');
 							resultado.innerHTML = '';
@@ -747,10 +743,6 @@
 							document.getElementById('resultado_melhor_ator').innerHTML = 'Erro ao obter melhores atores. Verifique o console para mais detalhes.';
 						});
 				}
-
-			
-				// Chama a função ao abrir a pagina
-				window.onload = obterMelhorAtor;
 			</script>			
 
 
