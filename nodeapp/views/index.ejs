@@ -557,16 +557,17 @@
 
 						<p>Procure pelos atores ou atrizes indicados de um prêmio específico</p>
 
-						<form method="post" action="/buscaenominado/">
+						<form method="post" onsubmit="buscaenominado(); return false;">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" id="nomeeventoenominado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" id="anoenominado" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" id="tipoenominado" required /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
+						<div id="resultado_pessoas_nominadas"></div>
 
 					</div>
 
@@ -578,16 +579,17 @@
 
 						<p>Procure pelos filmes indicados de um prêmio específico</p>
 
-						<form method="post" action="/buscafilmenominado/" onsubmit="buscaPremioFilmes(); return false;">
+						<form method="post" onsubmit="buscafilmenominado(); return false;">
 							<div class="row">
-								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" id="nome" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" id="ano" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" id ="tipo" required /></div>
 								<div class="col-12">
 									<input type="submit" value="Cadastrar" />
 								</div>
 							</div>
 						</form>
+						<div id="resultado_filmes_nominados"></div>
 
 					</div>
 				</section>
@@ -618,16 +620,125 @@
 
 			<script>
 
-				function buscaPremioFilmes() {
-					fetch('/atoresMaisPremiados')
+
+				function buscafilmenominado() {
+					var tipo = document.getElementById('tipo').value;
+					var nome = document.getElementById('nome').value;
+					var ano = document.getElementById('ano').value;
+					fetch('/buscafilmenominado', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							tipo: tipo,
+							nomeevento: nome,
+							ano: ano,
+						}),
+					})
 						.then(response => response.json())
-						.then(data => 
-							document.getElementById("bucapremiofilme"))
+						.then(data => {
+							console.log('Success:', data);
+							const filmesElement = document.getElementById('resultado_filmes_nominados');
+							filmesElement.innerHTML = '';
+							const table = document.createElement('table');
+							const thead = document.createElement('thead');
+							const tbody = document.createElement('tbody');
+							const trHead = document.createElement('tr');
+							const thTitulo = document.createElement('th');
+							const thAno = document.createElement('th');
+							const thPremiado = document.createElement('th');
+							thTitulo.textContent = 'Título Original';
+							thAno.textContent = 'Ano de Produção';
+							thPremiado.textContent = 'Premiado';
+							trHead.appendChild(thTitulo);
+							trHead.appendChild(thAno);
+							trHead.appendChild(thPremiado);
+							thead.appendChild(trHead);
+							table.appendChild(thead);
+							data.data.forEach(filme => {
+								const tr = document.createElement('tr');
+								const tdTitulo = document.createElement('td');
+								const tdAno = document.createElement('td');
+								const tdPremiado = document.createElement('td');
+								tdTitulo.textContent = filme.titulooriginal;
+								tdAno.textContent = filme.anoproducao;
+								tdPremiado.textContent = filme.premiado;
+								tr.appendChild(tdTitulo);
+								tr.appendChild(tdAno);
+								tr.appendChild(tdPremiado);
+								tbody.appendChild(tr);
+							});
+							table.appendChild(tbody);
+							filmesElement.appendChild(table);
+						})
 						.catch(error => {
-							console.error('Erro ao obter atores premiados:', error);
-							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
+							console.error('Erro:', error);
 						});
-				}
+					}
+
+				function buscaenominado() {
+					const nomeevento = document.getElementById('nomeeventoenominado').value;
+					const tipo = document.getElementById('tipoenominado').value;
+					const ano = document.getElementById('anoenominado').value;
+
+					fetch('/buscaenominado', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							nomeevento: nomeevento,
+							tipo: tipo,
+							ano: ano,
+						}),
+					})
+						.then(response => response.json())
+						.then(data => {
+							console.log('Success:', data);
+							const pessoasElement = document.getElementById('resultado_pessoas_nominadas');
+							pessoasElement.innerHTML = '';
+							const table = document.createElement('table');
+							const thead = document.createElement('thead');
+							const tbody = document.createElement('tbody');
+							const trHead = document.createElement('tr');
+							const thNome = document.createElement('th');
+							const thTitulo = document.createElement('th');
+							const thAno = document.createElement('th');
+							const thPremiado = document.createElement('th');
+							thNome.textContent = 'Nome Artístico';
+							thTitulo.textContent = 'Título Original';
+							thAno.textContent = 'Ano de Produção';
+							thPremiado.textContent = 'Premiado';
+							trHead.appendChild(thNome);
+							trHead.appendChild(thTitulo);
+							trHead.appendChild(thAno);
+							trHead.appendChild(thPremiado);
+							thead.appendChild(trHead);
+							table.appendChild(thead);
+							data.data.forEach(pessoa => {
+								const tr = document.createElement('tr');
+								const tdNome = document.createElement('td');
+								const tdTitulo = document.createElement('td');
+								const tdAno = document.createElement('td');
+								const tdPremiado = document.createElement('td');
+								tdNome.textContent = pessoa.nomeart;
+								tdTitulo.textContent = pessoa.titulooriginal;
+								tdAno.textContent = pessoa.anoproducao;
+								tdPremiado.textContent = pessoa.ganhou;
+								tr.appendChild(tdNome);
+								tr.appendChild(tdTitulo);
+								tr.appendChild(tdAno);
+								tr.appendChild(tdPremiado);
+								tbody.appendChild(tr);
+							});
+							table.appendChild(tbody);
+							pessoasElement.appendChild(table);
+						})
+						.catch(error => {
+							console.error('Erro:', error);
+						});
+					}
 
 				function obterAtoresPremiados() {
 					fetch('/atoresMaisPremiados')

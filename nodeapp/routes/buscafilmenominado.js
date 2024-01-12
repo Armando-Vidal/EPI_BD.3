@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
 
     // Consulta ao banco de dados
     const result = await db.query(
-      'SELECT * FROM FILMENOMINADO WHERE tipo = $1 AND nomeevento = $2 AND ano = $3',
+      'SELECT titulooriginal, anoproducao, premiado FROM FILMENOMINADO WHERE tipo = $1 AND nomeevento = $2 AND ano = $3',
       [tipo, nomeevento, ano]
     );
 

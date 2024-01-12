@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
     );
 
     const pessoasEncontradas = result.rows;
+    console.log(pessoasEncontradas);
 
     res.json({data: pessoasEncontradas});
   } catch (error) {
