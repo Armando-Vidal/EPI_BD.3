@@ -7,12 +7,11 @@ router.get('/', async (req, res) => {
     const result = await db.query(`
       SELECT en.NomeArt
       FROM ENOMINADO en
-      WHERE en.Tipo = 'Melhor Ator'
       GROUP BY en.NomeArt
       HAVING COUNT(DISTINCT en.NomeEvento) = (
         SELECT COUNT(DISTINCT NomeEvento)
         FROM ENOMINADO
-        WHERE Tipo = 'Melhor Ator'
+
       );
     `);
 
