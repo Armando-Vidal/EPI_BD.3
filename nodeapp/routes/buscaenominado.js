@@ -2,63 +2,22 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
-router.get('/enominado/get', async (req, res) => {
-  const { nomeEvento, ano, tipo } = req.params;
-
+router.post('/', async (req, res) => {
   try {
-    /* CREATE TABLE FILMENOMINADO(
-        TituloOriginal varchar(50),
-        AnoProducao int,
-        NomeEvento varchar(50),
-        Ano int,
-        Tipo varchar(20),
-        Premiado boolean,
-        
-        CONSTRAINT CEFilmeNominadoFilmes
-            FOREIGN KEY (TituloOriginal, AnoProducao)
-            REFERENCES FILMES (TituloOriginal, AnoProducao)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-        
-        CONSTRAINT CEFilmeNominadoPremio
-            FOREIGN KEY (NomeEvento, Ano, Tipo)
-            REFERENCES PREMIO (NomeEvento, Ano, Tipo)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-        
-        CONSTRAINT CPFilmeNominado
-            PRIMARY KEY (TituloOriginal, AnoProducao, NomeEvento, Ano, Tipo)
+    const { tipo, nomeevento, ano } = req.body;
+
+    // Consulta ao banco de dados
+    const result = await db.query(
+      'SELECT * FROM ENOMINADO WHERE tipo = $1 AND nomeevento = $2 AND ano = $3',
+      [tipo, nomeevento, ano]
     );
-    */
-    
-    const result = await db.query(`
-      SELECT
-        f.TituloOriginal AS filmeTitulo,
-        f.AnoProducao AS filmeAnoProducao,
-        p.NomeArt AS pessoaNomeArt,
-        fn.Premiado AS foiPremiado
-      FROM FILMENOMINADO fn
-      INNER JOIN FILMES f ON fn.TituloOriginal = f.TituloOriginal AND fn.AnoProducao = f.AnoProducao
-      INNER JOIN PESSOA p ON fn.NomeArt = p.NomeArt
-      WHERE fn.NomeEvento = $1 AND fn.Ano = $2 AND fn.Tipo = $3;
-    `, [nomeEvento, ano, tipo]);
 
-    const premioDetalhes = result.rows;
+    const pessoasEncontradas = result.rows;
 
-    // Formato da resposta
-    const response = {
-      award: {
-        nomeEvento,
-        ano,
-        tipo,
-        details: premioDetalhes,
-      },
-    };
-
-    res.json(response);
+    res.json({data: pessoasEncontradas});
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro interno do servidor');
+    console.error('Erro ao buscar pessoas:', error);
+    res.status(500).send('Erro ao buscar pessoas');
   }
 });
 

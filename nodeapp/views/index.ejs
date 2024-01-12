@@ -549,7 +549,7 @@
 
 				<!-- Busca de prêmios -->
 				<section id="busca_premios" class="four">
-					<div class="container">
+					<div class="container" id="bucapremiopessoa">
 
 						<header>
 							<h2>Obter Detalhes de um Prêmio para Atores</h2>
@@ -557,7 +557,7 @@
 
 						<p>Procure pelos atores ou atrizes indicados de um prêmio específico</p>
 
-						<form method="GET" action="/enominado/get">
+						<form method="post" action="/buscaenominado/">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
 								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
@@ -570,7 +570,7 @@
 
 					</div>
 
-					<div class="container">
+					<div class="container" id="buscapremiofilmes">
 
 						<header>
 							<h2>Obter Detalhes de um Prêmio para Filmes</h2>
@@ -578,7 +578,7 @@
 
 						<p>Procure pelos filmes indicados de um prêmio específico</p>
 
-						<form method="post" action="/buscafilmenominado/" onsubmit=>
+						<form method="post" action="/buscafilmenominado/" onsubmit="buscaPremioFilmes(); return false;">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
 								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
@@ -613,12 +613,22 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
-			<script src="../routes/premioDetalhesFilmes.js"></script>
-			<script src="../routes/premioDetalhesPessoas.js"></script>
 
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 			<script>
+
+				function buscaPremioFilmes() {
+					fetch('/atoresMaisPremiados')
+						.then(response => response.json())
+						.then(data => 
+							document.getElementById("bucapremiofilme"))
+						.catch(error => {
+							console.error('Erro ao obter atores premiados:', error);
+							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
+						});
+				}
+
 				function obterAtoresPremiados() {
 					fetch('/atoresMaisPremiados')
 						.then(response => response.json())
@@ -656,18 +666,6 @@
 							}
 						}
 					});
-				}
-
-				function buscaPremioFilmes() {
-					fetch('/atoresMaisPremiados')
-						.then(response => response.json())
-						.then(data => {
-							criarGrafico('atores_premiados', data);
-						})
-						.catch(error => {
-							console.error('Erro ao obter atores premiados:', error);
-							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
-						});
 				}
 
 				// Chama a função ao abrir a página
