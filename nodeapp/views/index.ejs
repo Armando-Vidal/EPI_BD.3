@@ -707,9 +707,10 @@
 
 			<script>
 				function obterMelhorAtor() {
-					fetch('/melhorAtor') 
+					fetch('/melhorAtor')
 						.then(response => response.json())
 						.then(data => {
+
 							const resultado = document.getElementById('resultado_melhor_ator');
 							resultado.innerHTML = '';
 	
@@ -722,12 +723,12 @@
                 					const headerCell = headerRow.insertCell(0);
                						headerCell.innerHTML = 'Melhores Atores';
 
-							 // Preencha as linhas da tabela com os dados recebidos
+							 // Preenche a tabela
                						for (let i = 0; i < data.melhorAtor.length; i++) {
                     						const actor = data.melhorAtor[i];
                     						const row = table.insertRow(i + 1);
 						                const cell = row.insertCell(0);
-                    						cell.innerHTML = actor.NomeArt;
+                    						cell.innerHTML = actor.NomeArt || 'Nome do Ator Indisponível';
                 					}
 							resultado.appendChild(table);
           					} else {
@@ -740,10 +741,6 @@
 							document.getElementById('resultado_melhor_ator').innerHTML = 'Erro ao obter melhores atores. Verifique o console para mais detalhes.';
 						});
 				}
-
-			
-				// Chama a função ao abrir a pagina
-				window.onload = obterMelhorAtor;
 			</script>			
 
 
