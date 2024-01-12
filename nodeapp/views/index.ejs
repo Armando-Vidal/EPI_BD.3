@@ -481,6 +481,7 @@
 						</form>
 
 						<div id="resultado_atores_premiados"></div>
+						<canvas id="grafico_atores_premiados"></canvas>
 					</div>
 				</section>
 
@@ -501,6 +502,7 @@
 						</form>
 
 						<div id="resultado_filmes_premiados"></div>
+						<canvas id="grafico_filmes_premiados"></canvas>
 					</div>
 				</section>
 
@@ -521,6 +523,7 @@
 						</form>
 
 						<div id="resultado_maior_arrecadacao"></div>
+						<canvas id="grafico_maior_arrecadacao"></canvas>
 					</div>
 				</section>
 
@@ -613,30 +616,58 @@
 			<script src="../routes/premioDetalhesFilmes.js"></script>
 			<script src="../routes/premioDetalhesPessoas.js"></script>
 
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 			<script>
 				function obterAtoresPremiados() {
-					fetch('/atoresMaisPremiados') 
+					fetch('/atoresMaisPremiados')
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('resultado_atores_premiados').innerHTML = 'Atores Mais Premiados: ' + JSON.stringify(data);
-
+							criarGrafico('atores_premiados', data);
 						})
 						.catch(error => {
 							console.error('Erro ao obter atores premiados:', error);
-							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter atores premiados. Verifique o console para mais detalhes.';
+							document.getElementById('resultado_atores_premiados').innerHTML = 'Erro ao obter filmes premiados. Verifique o console para mais detalhes.';
 						});
-						
 				}
-			
-				// Chama a função ao abrir a pagina
+
+				function criarGrafico(resultado, data) {
+					const labels = data.data.map(item => item.label);
+					const valores = data.data.map(item => item.value);
+
+					const ctx = document.getElementById('grafico_' + resultado).getContext('2d');
+					new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: labels,
+							datasets: [{
+								label: 'Premiações',
+								data: valores,
+								backgroundColor: 'rgba(75, 192, 192, 0.2)',
+								borderColor: 'rgba(75, 192, 192, 1)',
+								borderWidth: 1
+							}]
+						},
+						options: {
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+					});
+				}
+
+				// Chama a função ao abrir a página
 				window.onload = obterAtoresPremiados;
 			</script>
+
 			<script>
 				function obterFilmesPremiados() {
 					fetch('/filmesMaisPremiados')
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('resultado_filmes_premiados').innerHTML = 'Filmes Mais Premiados: ' + JSON.stringify(data);
+							criarGrafico('filmes_premiados', data);
 						})
 						.catch(error => {
 							console.error('Erro ao obter filmes premiados:', error);
@@ -652,7 +683,7 @@
 					fetch('/maiorArrecadacao')
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('resultado_maior_arrecadacao').innerHTML = 'Maiores arrecadações: ' + JSON.stringify(data);
+							criarGrafico('maior_arrecadacao', data);
 						})
 						.catch(error => {
 							console.error('Erro ao obter arrecadações:', error);
@@ -669,8 +700,30 @@
 					fetch('/melhorAtor') 
 						.then(response => response.json())
 						.then(data => {
-							document.getElementById('resultado_melhor_ator').innerHTML = 'Melhores Atores: ' + JSON.stringify(data);
-						})
+							const resultado = document.getElementById('resultado_melhor_ator');
+
+							// Verifique se há dados
+            						if (data.melhorAtor && data.melhorAtor.length > 0) {
+               						 const table = document.createElement('table');
+               						 table.border = '1';
+
+							const headerRow = table.insertRow(0);
+                					const headerCell = headerRow.insertCell(0);
+               						headerCell.innerHTML = 'Melhores Atores';
+
+							 // Preencha as linhas da tabela com os dados recebidos
+               						for (let i = 0; i < data.melhorAtor.length; i++) {
+                    					const actor = data.melhorAtor[i];
+                    					const row = table.insertRow(i + 1);
+					                const cell = row.insertCell(0);
+                    					cell.innerHTML = actor.NomeArt;
+                				}
+						resultado.appendChild(table);
+          				} else {
+				        	resultado.innerHTML = 'Nenhum ator premiado encontrado.';
+            					}
+        				})
+
 						.catch(error => {
 							console.error('Erro ao obter melhores atores:', error);
 							document.getElementById('resultado_melhor_ator').innerHTML = 'Erro ao obter melhores atores. Verifique o console para mais detalhes.';
