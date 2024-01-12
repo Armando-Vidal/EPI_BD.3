@@ -544,6 +544,51 @@
 					</div>
 				</section>
 
+				<!-- Busca de prêmios -->
+				<section id="busca_premios" class="four">
+					<div class="container">
+
+						<header>
+							<h2>Obter Detalhes de um Prêmio para Atores</h2>
+						</header>
+
+						<p>Procure pelos atores ou atrizes indicados de um prêmio específico</p>
+
+						<form method="GET" action="/enominado/get">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+
+					<div class="container">
+
+						<header>
+							<h2>Obter Detalhes de um Prêmio para Filmes</h2>
+						</header>
+
+						<p>Procure pelos filmes indicados de um prêmio específico</p>
+
+						<form method="post" action="/buscafilmenominado/">
+							<div class="row">
+								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano" required /></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="tipo" placeholder="Tipo de Prêmio" required /></div>
+								<div class="col-12">
+									<input type="submit" value="Cadastrar" />
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</section>
+
 
 		</div>
 
@@ -565,6 +610,8 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+			<script src="../routes/premioDetalhesFilmes.js"></script>
+			<script src="../routes/premioDetalhesPessoas.js"></script>
 
 			<script>
 				function obterAtoresPremiados() {

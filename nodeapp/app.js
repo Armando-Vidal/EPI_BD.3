@@ -26,7 +26,8 @@ const atoresMaisPremiadosRouter = require('./routes/atoresMaisPremiados');
 const filmesMaisPremiadosRouter = require('./routes/filmesMaisPremiados');
 const maiorArrecadacaoRouter = require('./routes/maiorArrecadacao');
 const melhorAtorRouter = require('./routes/melhorAtor');
-const premioDetalhesRouter = require('./routes/premioDetalhes');
+const buscaenominadoRouter = require('./routes/buscaenominado');
+const buscafilmenominadoRouter = require('./routes/buscafilmenominado');
 
 var app = express();
 
@@ -61,7 +62,8 @@ app.use('/atoresMaisPremiados', atoresMaisPremiadosRouter);
 app.use('/filmesMaisPremiados', filmesMaisPremiadosRouter);
 app.use('/maiorArrecadacao', maiorArrecadacaoRouter);
 app.use('/melhorAtor', melhorAtorRouter);
-app.use('/premioDetalhes', premioDetalhesRouter);
+app.use('/buscaenominado', buscaenominadoRouter);
+app.use('/buscafilmenominado', buscafilmenominadoRouter);
 
 
 // catch 404 and forward to error handler

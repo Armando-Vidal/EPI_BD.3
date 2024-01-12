@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
-router.get('/:nomeEvento/:ano/:tipo', async (req, res) => {
+router.get('/enominado/get', async (req, res) => {
   const { nomeEvento, ano, tipo } = req.params;
 
   try {
