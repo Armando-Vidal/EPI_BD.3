@@ -28,26 +28,20 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="#top" id="top-link"><span class="icon solid fa-envelope">Intro</span></a></li>
-								<li><a href="#cadastro_pessoa" id="portfolio-link"><span class="icon solid fa-envelope">Cadastro Pessoa</span></a></li>
+								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+								<li><a href="#cadastro_pessoa" id="portfolio-link"><span class="icon solid fa-th">Cadastro Pessoa</span></a></li>
 								<li><a href="#cadastro_juiz" id="contact-link"><span class="icon solid fa-envelope">Cadastro Juri</span></a></li>
 								<li><a href="#cadastro_diretor" id="contact-link"><span class="icon solid fa-envelope">Cadastro Diretor</span></a></li>
 								<li><a href="#cadastro_principal" id="contact-link"><span class="icon solid fa-envelope">Cadastro Protagonista</span></a></li>
 								<li><a href="#cadastro_coadjuvante" id="contact-link"><span class="icon solid fa-envelope">Cadastro Coadjuvante</span></a></li>
 								<li><a href="#cadastro_produtor" id="contact-link"><span class="icon solid fa-envelope">Cadastro Produtor</span></a></li>
 								<li><a href="#cadastro_roteirista" id="contact-link"><span class="icon solid fa-envelope">Cadastro Roteirista</span></a></li>
-								<li><a href="#cadastro_evento" id="about-link"><span class="icon solid fa-envelope">Cadastro Evento</span></a></li>
+								<li><a href="#cadastro_evento" id="about-link"><span class="icon solid fa-user">Cadastro Evento</span></a></li>
 								<li><a href="#cadastro_premio" id="contact-link"><span class="icon solid fa-envelope">Cadastro Prêmio</span></a></li>
 								<li><a href="#cadastro_edicao" id="contact-link"><span class="icon solid fa-envelope">Cadastro Edição</span></a></li>
 								<li><a href="#cadastro_nominacao" id="contact-link"><span class="icon solid fa-envelope">Cadastro Indicação</span></a></li>
 								<li><a href="#cadastro_filme" id="contact-link"><span class="icon solid fa-envelope">Cadastro Filme</span></a></li>
 								<li><a href="#cadastro_estreia" id="contact-link"><span class="icon solid fa-envelope">Cadastro Local de Estreia</span></a></li>
-
-								<li><a href="#obter_atores_premiados" id="contact-link"><span class="icon solid fa-envelope">Busca por Atores Premiados</span></a></li>
-								<li><a href="#obter_filmes_premiados" id="contact-link"><span class="icon solid fa-envelope">Busca por Filmes Premiados</span></a></li>
-								<li><a href="#obter_maior_arrecadacao" id="contact-link"><span class="icon solid fa-envelope">Busca por Arrecadação</span></a></li>
-								<li><a href="#obter_melhor_ator" id="contact-link"><span class="icon solid fa-envelope">Busca por Melhor Ator</span></a></li>
-								<li><a href="#busca_premios" id="contact-link"><span class="icon solid fa-envelope">Busca por Prêmios</span></a></li>
 							</ul>
 						</nav>
 
@@ -336,7 +330,7 @@
 						<form method="POST" action="/edicao/create">
 							<div class="row">
 								<div class="col-6 col-12-mobile"><input type="text" name="nomeevento" placeholder="Nome do Evento" required /></div>
-								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano da Edição" required/></div>
+								<div class="col-6 col-12-mobile"><input type="number" name="ano" placeholder="Ano da Edição" /></div>
 								<div class="col-6 col-12-mobile">
 									<input type="date" name="data_" placeholder="Data em que Ocorreu" class="datas" />
 									<label for="name_date">Data da Edição</label>
@@ -429,7 +423,7 @@
 								<div class="col-6 col-12-mobile"><input type="number" name="anoproducao" placeholder="Ano de Produção" required /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="titulonobrasil" placeholder="Título no Brasil" /></div>
 								<div class="col-6 col-12-mobile"><input type="text" name="idiomaoriginal" placeholder="Idioma Original" /></div>
-								<div class="col-6 col-12-mobile"><input type="text" name="classe" placeholder="Classe" required/></div>
+								<div class="col-6 col-12-mobile"><input type="text" name="classe" placeholder="Classe" /></div>
 								<div class="col-6 col-12-mobile">
 									<input type="date" name="dataestreio" placeholder="Data de Estreia" class="datas" />
 									<label for="name_date">Data de Estréia</label>
@@ -538,13 +532,13 @@
 					<div class="container">
 
 						<header>
-							<h2>Obter Melhores Atores</h2>
+							<h2>Obter Atores Premiados em Todos Eventos</h2>
 						</header>
 
 						<form id="form_obter_melhor_ator" onsubmit="obterMelhorAtor(); return false;">
 							<div class="row">
 								<div class="col-12">
-									<input type="submit" value="Obter Melhor Ator" />
+									<input type="submit" value="Obter Atores" />
 								</div>
 							</div>
 						</form>
@@ -555,7 +549,7 @@
 
 				<!-- Busca de prêmios -->
 				<section id="busca_premios" class="four">
-					<div class="container">
+					<div class="container" id="bucapremiopessoa">
 
 						<header>
 							<h2>Obter Detalhes de um Prêmio para Atores</h2>
@@ -577,7 +571,7 @@
 
 					</div>
 
-					<div class="container">
+					<div class="container" id="buscapremiofilmes">
 
 						<header>
 							<h2>Obter Detalhes de um Prêmio para Filmes</h2>
