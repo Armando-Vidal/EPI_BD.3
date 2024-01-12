@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
     `);
 
     const melhorAtor = result.rows;
+    console.log(melhorAtor);
     res.json({ melhorAtor });
   } catch (error) {
     console.error(error);
