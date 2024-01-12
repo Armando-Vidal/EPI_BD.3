@@ -744,6 +744,10 @@
 					fetch('/atoresMaisPremiados')
 						.then(response => response.json())
 						.then(data => {
+
+							// Limpa o conteúdo anterior
+							document.getElementById('resultado_atores_premiados').innerHTML = '';
+
 							criarGrafico('atores_premiados', data);
 						})
 						.catch(error => {
@@ -779,8 +783,6 @@
 					});
 				}
 
-				// Chama a função ao abrir a página
-				window.onload = obterAtoresPremiados;
 			</script>
 
 			<script>
@@ -788,6 +790,10 @@
 					fetch('/filmesMaisPremiados')
 						.then(response => response.json())
 						.then(data => {
+
+							// Limpa o conteúdo anterior
+							document.getElementById('resultado_filmes_premiados').innerHTML = '';
+
 							criarGrafico('filmes_premiados', data);
 						})
 						.catch(error => {
@@ -796,14 +802,16 @@
 						});
 				}
 			
-				// Chama a função ao abrir a pagina
-				window.onload = obterFilmesPremiados;
 			</script>
 			<script>
 				function obtermaiorArrecadacao() {
 					fetch('/maiorArrecadacao')
 						.then(response => response.json())
 						.then(data => {
+
+							// Limpa o conteúdo anterior
+							document.getElementById('resultado_maior_arrecadacao').innerHTML = '';
+
 							criarGrafico('maior_arrecadacao', data);
 						})
 						.catch(error => {
@@ -812,8 +820,6 @@
 						});
 				}
 			
-				// Chama a função ao abrir a pagina
-				window.onload = obtermaiorArrecadacao;
 			</script>
 
 			<script>
