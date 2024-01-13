@@ -23,3 +23,6 @@ npm install
 
 npm start
 
+## Observações
+
+- O código SQL do projeto foi atualizado, pois houve a necessidade de adicionar valores default para alguns atributos (booleanos) das entidades: PESSOA, ENOMINADO, FILMENOMINADO e EDIRETOR
