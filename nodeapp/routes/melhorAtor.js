@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       FROM ENOMINADO en
       GROUP BY en.NomeArt
       HAVING COUNT(DISTINCT en.NomeEvento) = (
-        SELECT COUNT(DISTINCT NomeEvento)
+        SELECT COUNT(DISTINCT Nome)
         FROM EVENTOS
 
       );

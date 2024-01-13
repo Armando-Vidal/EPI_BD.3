@@ -10,27 +10,6 @@ router.get('/form', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    /*CREATE TABLE PESSOA(
-        NomeArt varchar(50),
-        NomeVerdadeiro varchar(50),
-        Sexo varchar(2),
-        AnoNasc int,
-        Site varchar(30),
-        AnoInic int,
-        NroTotalAnos int,
-        Situacao varchar(10),
-        ProfDiretor boolean NOT NULL DEFAULT FALSE,
-        ProfAtor boolean NOT NULL DEFAULT FALSE,
-        ProfProdutor boolean NOT NULL DEFAULT FALSE,
-        ProfRoteirista boolean NOT NULL DEFAULT FALSE,
-        
-        CONSTRAINT VerificaProfissao
-            CHECK (ProfDiretor = TRUE OR ProfAtor = TRUE OR ProfProdutor = TRUE OR ProfRoteirista = TRUE),
-        
-        CONSTRAINT CPPessoa
-            PRIMARY KEY (NomeArt)
-    );
-    */
     const body = req.body;
     console.log(body);
     console.log("Dados recebidos com sucesso!");
