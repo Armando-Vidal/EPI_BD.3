@@ -267,3 +267,42 @@ CREATE TABLE ENOMINADO(
     CONSTRAINT CPENominado
         PRIMARY KEY (NomeEvento, Tipo, Ano, NomeArt)
 );
+
+CREATE RULE AtorPrincipalGenero AS
+    ON INSERT TO ATORPRINCIPAL
+    WHERE NEW .TituloOriginal IN (SELECT TituloOriginal FROM FILMES WHERE FILMES.Classe = 'documentario')
+    OR NEW .NomeArt IN (SELECT NomeArt FROM PESSOA WHERE PESSOA.ProfAtor = FALSE)
+    DO INSTEAD NOTHING;
+    
+CREATE RULE AtorElencoGenero AS
+    ON INSERT TO ATORELENCO
+    WHERE NEW .TituloOriginal IN (SELECT TituloOriginal FROM FILMES WHERE FILMES.Classe = 'documentario')
+    OR NEW .NomeArt IN (SELECT NomeArt FROM PESSOA WHERE PESSOA.ProfAtor = FALSE)
+    DO INSTEAD NOTHING;
+  
+CREATE RULE PessoaDiretor AS
+    ON INSERT TO EDIRETOR
+    WHERE NEW .NomeArt IN (SELECT NomeArt FROM PESSOA WHERE PESSOA.ProfDiretor = FALSE)
+    DO INSTEAD NOTHING;
+    
+CREATE RULE PessoaProdutor AS
+    ON INSERT TO EPRODUTOR
+    WHERE NEW .NomeArt IN (SELECT NomeArt FROM PESSOA WHERE PESSOA.ProfProdutor = FALSE)
+    DO INSTEAD NOTHING;
+    
+CREATE RULE PessoaRoteirista AS
+    ON INSERT TO EROTEIRISTA
+    WHERE NEW .NomeArt IN (SELECT NomeArt FROM PESSOA WHERE PESSOA.ProfRoteirista = FALSE)
+    DO INSTEAD NOTHING;
+
+CREATE RULE PessoaParticipaFilme AS
+    ON INSERT TO EJURI
+    WHERE EXISTS (
+        SELECT 1
+        FROM FILMENOMINADO FN
+        WHERE FN.NomeEvento = NEW.NomeEvento
+          AND FN.Ano = NEW.Ano
+          AND (FN.TituloOriginal = NEW.TituloOriginal AND FN.AnoProducao = NEW.AnoProducao
+               OR FN.NomeArt = NEW.NomeArt)
+    )
+    DO INSTEAD NOTHING;
