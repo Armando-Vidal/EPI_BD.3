@@ -10,9 +10,6 @@ Lucas Saliba Berlinck Martins - 11892556
 
 Marcos Vilela Rezende Júnior - 13729806
 
-# Video sobre a implementação:
-https://drive.google.com/file/d/1U4jrPtfn1L3PGS1SpJfPuHE3xh260r_i/view?usp=sharing
-
 ## Como rodar
 Conferir se os dados estão de acordo com o descrito em database.js
 
