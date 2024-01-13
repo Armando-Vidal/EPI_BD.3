@@ -17,7 +17,10 @@ https://drive.google.com/file/d/1U4jrPtfn1L3PGS1SpJfPuHE3xh260r_i/view?usp=shari
 Conferir se os dados estão de acordo com o descrito em database.js
 
 sudo apt install npm
+
 cd nodeapp
+
 npm install
+
 npm start
 
